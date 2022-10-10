@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.2
+    restart: always
+    ports:
+        - 8080:8080
+    env_file:
+      - .env
+    command: start-dev
+    volumes:
+      - ./keycloak:/opt/keycloak/data
+
+  api-rest:
+    build: ./api-rest
+    restart: always
+    ports:
+      - 3001:3001
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./api-rest:/usr/src/app
+    command: npm start
