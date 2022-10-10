@@ -1,8 +1,16 @@
 # appDemo
-Prueba de Kubernetes, Docker y KeyCloak
+Prueba de Kubernetes, Docker y Auth0.
 
-# .env
+## How to start
+
+Run the following commands in the root:
+
+```
+docker-compose build
+docker-compose up
+```
+
+## .env
 
 ´´´
-
 ´´´

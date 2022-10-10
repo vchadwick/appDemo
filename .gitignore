@@ -1,2 +1,9 @@
+# Ignore Express files
+/express-backend/node_modules
+
+
+# Ignore React files
+/react-frontend/node_modules
+
+# Ignore general files
 .env
-/api-rest/node_modules
