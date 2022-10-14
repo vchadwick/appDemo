@@ -8,30 +8,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'styles')));
 
-// Authorization middleware.
+// Authorization config
 const checkJwt = auth({
-  audience: 'YOUR_API_IDENTIFIER',
-  issuerBaseURL: `https://YOUR_DOMAIN/`,
+  // Probar con allowedAudiences si es que no funciona
+  audience: "https://capstone_api/",
+  issuerBaseURL: `https://dev-3r7miffl.us.auth0.com`,
 });
 
-// Landing page
+// Public
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+  res.send('Public');
 });
 
-
-// This route doesn't need authentication
-app.get('/api/public', function(req, res) {
-  res.json({
-    message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'
-  });
+// Private
+app.get('/private', checkJwt, function(req, res) {
+  res.send('Endpoint Privado');
 });
 
-// This route needs authentication
-app.get('/api/private', checkJwt, function(req, res) {
-  res.json({
-    message: 'Hello from a private endpoint! You need to be authenticated to see this.'
-  });
+// Scope
+const checkScopes = requiredScopes(['example:permission']);
+
+// Private with scope
+app.get('/private_scope', checkJwt, checkScopes, function(req, res) {
+  res.send('Endpoint Privado con Scope');
 });
 
 app.listen(3001, () => {

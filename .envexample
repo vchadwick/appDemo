@@ -1,0 +1,10 @@
+# GENERALES
+AUTH0_DOMAIN='dev-3r7miffl.us.auth0.com'
+# FRONT
+REACT_APP_AUTH0_CLIENT_ID="zQQ2VOtd6x4qH08ASaGk8jzheW10aEaS"
+REACT_APP_URL='http://localhost:3000'
+CLIENT_PORT=3000
+# BACK
+EXPRESS_APP_AUDIENCE='https://express-backend'
+EXPRESS_APP_URL='http://localhost:3001'
+SERVER_PORT=3001

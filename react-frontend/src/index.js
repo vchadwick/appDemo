@@ -11,11 +11,13 @@ ReactDOM.render(
   <Auth0Provider
     domain="dev-3r7miffl.us.auth0.com"
     clientId="zQQ2VOtd6x4qH08ASaGk8jzheW10aEaS"
-    redirectUri='http://localhost:3000'
+    redirectUri={window.location.origin}
+    audience="https://capstone_api/"
+    scope="read:current_user update:current_user_metadata"
   >
     <LoginButton />
-    <Profile />
     <LogoutButton />
+    <Profile />
     <App />
   </Auth0Provider>,
   document.getElementById("root")
